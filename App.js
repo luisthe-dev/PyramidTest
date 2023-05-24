@@ -1,20 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { useFonts } from "expo-font";
+import { Poppins_600SemiBold } from "@expo-google-fonts/poppins";
+import { Roboto_400Regular } from "@expo-google-fonts/roboto";
+import { OpenSans_700Bold } from "@expo-google-fonts/open-sans";
+import HelpCenter from "./screens/HelpCenter";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+const App = () => {
+  const [fontsLoaded] = useFonts({
+    Poppins_600SemiBold,
+    Roboto_400Regular,
+    OpenSans_700Bold,
+  });
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  if (!fontsLoaded) {
+    return null;
+  }
+
+  return <HelpCenter />;
+};
+
+export default App;
